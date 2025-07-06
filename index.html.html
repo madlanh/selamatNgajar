@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hai, Yayang!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Pacifico&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        #layar-pembuka {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #4a148c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            transition: opacity 0.8s ease-out;
+        }
+
+        #tombol-buka {
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            color: #4a148c;
+            background-color: #fdd835;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        #tombol-buka:hover {
+            transform: scale(1.1);
+        }
+
+        #konten-ucapan {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdd835, #9c27b0);
+            text-align: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #4a148c;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #fdd835;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #fff;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+        
+        .foto-spesial {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            object-fit: cover;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="layar-pembuka">
+        <button id="tombol-buka">Klik Untuk Buka Kejutan!</button>
+    </div>
+
+    <div id="konten-ucapan">
+        <h1>Selamat Menjalani Hari Pertama Mengajar!</h1>
+        <h2>Untuk Yayangku, Ayuku, Neng Geulis, Calon Istriku</h2>
+        <img src="D:\Latihan Pemrograman\kartuUcapan\photo_6291919302873433784_y.jpg" alt="Foto Spesial" class="foto-spesial">
+        <p>
+            Semangat ya untuk semester barunya! Sebarkan semua ilmu dan energi positif yayang.
+            Kiay yakin Yayang akan jadi pengajar favorit yang menginspirasi anak-anak, bahkan orang tua/wali.
+            I am so proud of you! Semoga hari pertama dan seterusnya menyenangkan!
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script>
+        const tombolBuka = document.getElementById('tombol-buka');
+        const layarPembuka = document.getElementById('layar-pembuka');
+        const kontenUcapan = document.getElementById('konten-ucapan');
+
+        tombolBuka.addEventListener('click', () => {
+            layarPembuka.style.opacity = '0';
+            setTimeout(() => {
+                layarPembuka.style.display = 'none';
+            }, 800);
+
+            kontenUcapan.style.display = 'flex';
+            document.body.style.overflow = 'auto';
+
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+                confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+            }, 250);
+        });
+    </script>
+
+</body>
+</html>
