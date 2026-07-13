@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hai, Yayang!</title>
+    <title>Hai, Istriku!</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Pacifico&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&display=swap');
 
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
+            background: linear-gradient(135deg, #FFF0F2 0%, #FFE4E6 100%); /* Latar belakang pinkish-white lembut */
         }
 
         #layar-pembuka {
@@ -19,30 +20,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #4a148c;
+            background: linear-gradient(135deg, #880e4f 0%, #4a0007 100%); /* Merah marun/burgundy gelap yang elegan */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             z-index: 1000;
-            transition: opacity 0.8s ease-out;
+            transition: opacity 1s ease-out;
         }
 
         #tombol-buka {
-            padding: 20px 40px;
+            padding: 20px 45px;
             font-size: 1.5rem;
-            color: #4a148c;
-            background-color: #fdd835;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff4081 0%, #e91e63 100%); /* Merah muda/crimson cerah untuk tombol */
             border: none;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 700;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease;
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
         }
 
         #tombol-buka:hover {
-            transform: scale(1.1);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 30px rgba(233, 30, 99, 0.6);
         }
 
         #konten-ucapan {
@@ -51,69 +54,140 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #fdd835, #9c27b0);
+            background: linear-gradient(135deg, #b71c1c 0%, #880e4f 100%); /* Gradien merah crimson ke burgundy mewah */
             text-align: center;
             padding: 40px 20px;
             box-sizing: border-box;
             opacity: 0;
-            animation: fadeIn 1.5s forwards;
-            animation-delay: 0.5s;
+            display: none;
+            animation: fadeInZoom 1.5s forwards;
+            animation-delay: 0.8s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes fadeInZoom {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 3rem;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px #4a148c;
-            margin-bottom: 10px;
+            font-size: 3.2rem;
+            background: linear-gradient(to bottom, #ffffff 60%, #ffe0e6 100%); /* Teks putih bersih dengan gradien pink lembut */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 5px;
         }
 
         h2 {
-            font-size: 1.8rem;
-            color: #fdd835;
-            margin-top: 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #ff8a80; /* Warna coral-pink lembut agar tidak bertabrakan dengan teks putih */
+            margin-top: 5px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         p {
-            font-size: 1.2rem;
-            color: #fff;
+            font-size: 1.25rem;
+            color: #ffebee; /* Putih kemerahan yang sangat lembut di mata */
             max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.6;
+            margin: 25px auto 15px auto;
+            line-height: 1.7;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
-        
+
         .foto-spesial {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            border: 5px solid #fff;
+            border: 6px solid #ffffff;
             object-fit: cover;
             margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            animation: detakJantung 2.5s infinite ease-in-out;
+        }
+
+        @keyframes detakJantung {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.03); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* Gaya untuk gambar tanda tangan */
+        .tanda-tangan {
+            width: 150px;
+            height: auto;
+            margin: 10px auto 20px auto;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .ikon-hati {
+            color: #ff5252;
+            font-size: 2.2rem;
+            margin-top: 15px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        /* Gaya tombol kontrol musik di pojok kiri bawah */
+        #kontrol-musik {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            display: none; /* Muncul setelah layar dibuka */
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        #kontrol-musik:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        #ikon-musik {
+            font-size: 1.5rem;
+            color: #ffffff;
+            user-select: none;
         }
 
     </style>
 </head>
 <body>
 
+    <audio id="musik-bg" src="music.mp3" loop></audio>
+
+    <div id="kontrol-musik">
+        <span id="ikon-musik">🎵</span>
+    </div>
+
     <div id="layar-pembuka">
-        <button id="tombol-buka">Klik Untuk Buka!</button>
+        <button id="tombol-buka">💛 Klik Aku 💛</button>
     </div>
 
     <div id="konten-ucapan">
         <h1>Selamat Menjalani Hari Pertama Mengajar!</h1>
-        <h2>Untuk Yayangku, Ayuku, Neng Geulis, Calon Istriku</h2>
-        <img src="photo_6291919302873433784_y.jpg" alt="Foto Kita" class="foto-spesial">
+        <h2>Untuk Istriku, Yayangku, Cantikku, Ayuku, Manisku</h2>
+        <img src="photo_6244779541427588968_y.jpg" alt="Foto Kita" class="foto-spesial">
         <p>
-            Semangat ya untuk semester barunya! Sebarkan semua ilmu dan energi positif Yayang.
-            Yakin kalau Yayang akan jadi pengajar favorit yang menginspirasi anak-anak, bahkan orang tua/wali.
-            I am so proud of you! Semoga hari pertama dan seterusnya menyenangkan!
+            Semangat menyambut semester baru, yayangku! Setiap ilmu yang yayang ajarkan bakal jadi momen berharga bagi siswa/i di sana. Yayang juga bakal jadi figur favorit bagi siswa dan orang tua/wali. Kiay bangga sama yayang, istriku tercinta. Semoga hari-hari yayang di sana selalu lancar dan penuh dukungan. I love you so much, yayang!
         </p>
+        <img src="TTD_Adlan.png" alt="Tanda Tangan Kiay" class="tanda-tangan">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
@@ -121,35 +195,53 @@
         const tombolBuka = document.getElementById('tombol-buka');
         const layarPembuka = document.getElementById('layar-pembuka');
         const kontenUcapan = document.getElementById('konten-ucapan');
+        const musikBg = document.getElementById('musik-bg');
+        const tombolMusik = document.getElementById('kontrol-musik');
+        const ikonMusik = document.getElementById('ikon-musik');
 
         tombolBuka.addEventListener('click', () => {
             layarPembuka.style.opacity = '0';
+            
+            // Memutar musik otomatis setelah interaksi klik user
+            musikBg.play().catch(error => console.log("Autoplay dicegah oleh browser:", error));
+            
             setTimeout(() => {
                 layarPembuka.style.display = 'none';
-            }, 800);
+                kontenUcapan.style.display = 'flex';
+                tombolMusik.style.display = 'flex'; // Tampilkan tombol kontrol musik
+                document.body.style.overflow = 'auto';
+            }, 1000);
 
-            kontenUcapan.style.display = 'flex';
-            document.body.style.overflow = 'auto';
+            // Efek ledakan confetti bentuk hati bernuansa merah-pink-putih
+            const count = 150;
+            const defaults = { origin: { y: 0.6 } };
 
-            const duration = 5 * 1000;
-            const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-                return Math.random() * (max - min) + min;
+            function fire(particleRatio, opts) {
+                confetti({
+                    ...defaults,
+                    ...opts,
+                    particleCount: Math.floor(count * particleRatio),
+                    shapes: ['heart'],
+                    colors: ['#ff1744', '#ff5252', '#ff8a80', '#ffffff'] 
+                });
             }
 
-            const interval = setInterval(function() {
-                const timeLeft = animationEnd - Date.now();
+            fire(0.25, { spread: 30, startVelocity: 60 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 30, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 50 });
+        });
 
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-
-                const particleCount = 50 * (timeLeft / duration);
-                confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-                confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-            }, 250);
+        // Logika fungsi Play & Pause Musik
+        tombolMusik.addEventListener('click', () => {
+            if (musikBg.paused) {
+                musikBg.play();
+                ikonMusik.textContent = '🎵'; // Ikon saat musik menyala
+            } else {
+                musikBg.pause();
+                ikonMusik.textContent = '🔇'; // Ikon saat musik mati
+            }
         });
     </script>
 
